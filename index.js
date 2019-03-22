@@ -3,6 +3,7 @@
 // code away!
 const express = require("express");
 const helmet = require("helmet");
+const cors = require("cors");
 
 const projectRoutes = require("./routers/projectRoutes");
 const actionRoutes = require("./routers/actionRoutes");
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(helmet());
+app.use(cors());
 
 app.get("/", (req, res) =>
   res.send("<h1>Sprint Challenge: Express and Node.js</h1>")
