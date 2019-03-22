@@ -1,5 +1,6 @@
 const express = require("express");
 const projectDb = require("../data/helpers/projectModel");
+const checkBody = require("../middleware/projects");
 const router = express.Router();
 
 router
@@ -14,12 +15,7 @@ router
         .json({ error: "Sorry, we couldn't retrieve the projects." });
     }
   })
-  .post(async (req, res) => {
-    const { name, description } = req.body;
-    if (!name || !description)
-      return res
-        .status(400)
-        .json({ error: "New project must have a name and a description." });
+  .post(checkBody, async (req, res) => {
     try {
       const newProject = await projectDb.insert(req.body);
       const projects = await projectDb.get();
@@ -49,13 +45,8 @@ router
         .json({ error: "Sorry, we couldn't delete that project." });
     }
   })
-  .put(async (req, res) => {
+  .put(checkBody, async (req, res) => {
     const { id } = req.params;
-    const { description, name } = req.body;
-    if (!name || !description)
-      return res
-        .status(400)
-        .json({ error: "New project must have a name and a description." });
     try {
       const updated = await projectDb.update(id, req.body);
       if (!updated)
