@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+  Some features of express are routers and middleware. Express is very unopinionated, which allows us to add as much or as little functionality as we want. Express routers allow us to break our application up into smaller sub-applications for more understandable code.
+
 - [ ] Describe Middleware?
+
+  Middleware is a way to add functionality, in this case to express. It is implemented as functions that should handle one aspect of our application. Almost everything we do in express is actually middleware. In express we can add middleware to the entire application, or to a specific endpoint. A middleware function takes in the request, the response and a callback function as it's parameters. The callback function is commonly called next, and it lets express know to call the next piece of middleware. Even our request handlers are middleware.
 
 - [ ] Describe a Resource?
 
+  In a restful environment, everything is a resource. Each resource should have a unique url, and they are managed using http methods. Any information that can be named is a resource. The rest server provides access to the resources, and the client can access and modify those resources.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+  An Api can return a status code to let clients know if a request was successful. They can also return data and messages with more information. 200 status codes mean the request was successful, 400 status codes mean there was an error on the part of the client, and 500 means there was a server error.
+
 - [ ] How can we partition our application into sub-applications?
+
+  We can use routers to break up our application into smaller parts. Each router is generally written in it's own file, with a unique url, and can even have it's own middleware.
 
 ## Project Setup
 
